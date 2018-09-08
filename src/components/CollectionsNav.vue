@@ -14,12 +14,10 @@ export default {
   computed: {
     collections() {
       if (this.collection) {
-          return this.collection.collectionsOrder.map(id => this.$store.state.collections[id]);
+        return this.collection.collectionsOrder.map(id => this.$store.state.collections[id]);
       }
-      else {
-          return this.$store.state.collectionsOrder.map(id => this.$store.state.collections[id]);
-      }
-    }
-  }
-}
+      return this.$store.state.collectionsOrder.map(id => this.$store.state.collections[id]);
+    },
+  },
+};
 </script>

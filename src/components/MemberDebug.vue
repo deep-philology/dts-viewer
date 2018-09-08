@@ -3,7 +3,7 @@
 </template>
 <script>
 export default {
-    name: 'member-debug',
-    props: ['member']
-}
+  name: 'member-debug',
+  props: ['member'],
+};
 </script>

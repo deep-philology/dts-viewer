@@ -10,18 +10,19 @@
 
 <script>
 import { LOAD_ENDPOINT } from '../constants';
+
 export default {
   name: 'endpoint-input',
   data() {
     return {
-      endpoint: 'http://texts.alpheios.net/api/dts'
-    }
+      endpoint: 'http://texts.alpheios.net/api/dts',
+    };
   },
   methods: {
     onLoad() {
       this.$store.dispatch(LOAD_ENDPOINT, { url: this.endpoint });
-    }
-  }
+    },
+  },
 };
 </script>
 
