@@ -1,18 +1,26 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>DTS Explorer</h1>
+    <div v-if="loading">Loading...</div>
+    <endpoint-input v-else></endpoint-input>
+    <collections-nav></collections-nav>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import CollectionsNav from '@/components/CollectionsNav.vue';
+import EndpointInput from '@/components/EndpointInput.vue';
 
 export default {
   name: 'home',
   components: {
-    HelloWorld,
+    CollectionsNav,
+    EndpointInput,
   },
+  computed: {
+    loading() {
+      return this.$store.state.loading;
+    }
+  }
 };
 </script>
