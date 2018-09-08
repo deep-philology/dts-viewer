@@ -57,3 +57,18 @@ button {
     padding: 0.5rem 0.75rem;
     cursor: pointer;
 }
+
+.breadcrumbs {
+    .breadcrumb {
+        &:after {
+            content: "/";
+            display: inline-block;
+            padding: 0 5px;
+        }
+        &:last-child {
+            &:after {
+                display: none;
+            }
+        }
+    }
+}
