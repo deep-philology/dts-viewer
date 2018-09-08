@@ -12,12 +12,14 @@
 
     <div v-if="loading">Loading...</div>
     <collections-nav v-else :collection="collection"  @selected="onSelect"></collections-nav>
+    <member-debug v-for="member in collection.member" :key="member.id" :member="member"></member-debug>
   </div>
 </template>
 <script>
 import Breadcrumbs from '@/components/Breadcrumbs.vue';
 import CollectionsNav from '@/components/CollectionsNav.vue';
 import EndpointInput from '@/components/EndpointInput.vue';
+import MemberDebug from '@/components/MemberDebug.vue';
 
 export default {
   name: 'app',
@@ -25,6 +27,7 @@ export default {
     Breadcrumbs,
     CollectionsNav,
     EndpointInput,
+    MemberDebug
   },
   data() {
     return {
