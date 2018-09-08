@@ -12,10 +12,12 @@
 
     <div v-if="loading">Loading...</div>
     <collections-nav v-else :collection="collection"  @selected="onSelect"></collections-nav>
-    <member-debug
-      v-for="member in collection.member"
-      :key="member.id"
-      :member="member"></member-debug>
+    <div v-if="collection && collection.member">
+      <member-debug
+        v-for="member in collection.member"
+        :key="member.id"
+        :member="member"></member-debug>
+    </div>
   </div>
 </template>
 <script>
