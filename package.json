@@ -10,7 +10,6 @@
   "dependencies": {
     "axios": "^0.18.0",
     "vue": "^2.5.17",
-    "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
@@ -33,7 +32,8 @@
     ],
     "rules": {
       "import/prefer-default-export": false,
-      "no-param-reassign": ["error",
+      "no-param-reassign": [
+        "error",
         {
           "props": true,
           "ignorePropertyModificationsFor": [

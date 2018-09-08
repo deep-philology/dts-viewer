@@ -1,9 +1,9 @@
 <template>
     <ul>
       <li v-for="c in collections" :key="c.id">
-        <router-link :to="{name: 'collection', params: {urn: c.id}}">
+        <a href="#" @click.stop="$emit('selected', c)">
           {{ c.title }} ({{ c.totalItems }})
-        </router-link>
+        </a>
       </li>
     </ul>
 </template>

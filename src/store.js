@@ -2,14 +2,20 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import api from './api';
-import { SET_ENDPOINT, LOAD_ENDPOINT, SET_LOADING, LOAD_COLLECTIONS, LOAD_COLLECTION } from './constants';
+import {
+  SET_ENDPOINT,
+  LOAD_ENDPOINT,
+  LOAD_COLLECTIONS,
+  LOAD_COLLECTION,
+  SET_LOADED,
+} from './constants';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     endpoint: '',
-    loading: false,
+    loaded: false,
     id: '',
     type: '',
     context: '',
@@ -20,8 +26,8 @@ export default new Vuex.Store({
     collections: {},
   },
   mutations: {
-    [SET_LOADING]: (state, loading) => {
-      state.loading = loading;
+    [SET_LOADED]: (state) => {
+      state.loaded = true;
     },
     [SET_ENDPOINT]: (state, url) => {
       state.endpoint = url;
@@ -81,16 +87,13 @@ export default new Vuex.Store({
         return Promise();
       });
     }),
-    [LOAD_ENDPOINT]: ({ commit, dispatch }, { url }) => {
-      commit(SET_LOADING, true);
-      return api.fetchEndpoint(url, (data) => {
-        commit(SET_ENDPOINT, url);
-        commit(LOAD_ENDPOINT, data);
-        const collectionsUrl = `${url}${data.collections.replace(data['@id'], '')}`;
-        dispatch(LOAD_COLLECTIONS, { url: collectionsUrl }).then(() => {
-          commit(SET_LOADING, false);
-        });
+    [LOAD_ENDPOINT]: ({ commit, dispatch }, { url }) => api.fetchEndpoint(url, (data) => {
+      commit(SET_ENDPOINT, url);
+      commit(LOAD_ENDPOINT, data);
+      const collectionsUrl = `${url}${data.collections.replace(data['@id'], '')}`;
+      dispatch(LOAD_COLLECTIONS, { url: collectionsUrl }).then(() => {
+        commit(SET_LOADED, true);
       });
-    },
+    }),
   },
 });

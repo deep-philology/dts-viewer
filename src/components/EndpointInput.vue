@@ -14,7 +14,7 @@ export default {
   name: 'endpoint-input',
   data() {
     return {
-      endpoint: ''
+      endpoint: 'http://texts.alpheios.net/api/dts'
     }
   },
   methods: {
